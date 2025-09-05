@@ -19,17 +19,27 @@ public class EnemyMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (agent.remainingDistance <= agent.stoppingDistance)
+        if ((transform.position - agent.destination).magnitude <= agent.stoppingDistance)
         {
-            if (currentTarget == point1)
+            if ((transform.position - point1.position).magnitude < (transform.position - point2.position).magnitude)
             {
-                currentTarget = point2;
+                agent.SetDestination(point2.position);
             }
             else
             {
-                currentTarget = point1;
+                agent.SetDestination(point1.position);
             }
-            agent.SetDestination(currentTarget.position);
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other != null)
+        {
+            if (other.TryGetComponent(out PlayerController player))
+            {
+                player.GoToSpawnPoint();
+            }
         }
     }
 }
