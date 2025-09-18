@@ -13,30 +13,30 @@ public class EnemyMovement : MonoBehaviour
     void Start()
     {
         currentTarget = point1;
-        agent.SetDestination(currentTarget.position);
+        agent.SetDestination( currentTarget.position );
     }
 
     // Update is called once per frame
     void Update()
     {
-        if ((transform.position - agent.destination).magnitude <= agent.stoppingDistance)
+        if ( ( transform.position - agent.destination ).magnitude <= agent.stoppingDistance )
         {
-            if ((transform.position - point1.position).magnitude < (transform.position - point2.position).magnitude)
+            if ( ( transform.position - point1.position ).magnitude < ( transform.position - point2.position ).magnitude )
             {
-                agent.SetDestination(point2.position);
+                agent.SetDestination( point2.position );
             }
             else
             {
-                agent.SetDestination(point1.position);
+                agent.SetDestination( point1.position );
             }
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter( Collider other )
     {
-        if (other != null)
+        if ( other != null )
         {
-            if (other.TryGetComponent(out PlayerController player))
+            if ( other.TryGetComponent( out PlayerMovement player ) )
             {
                 player.GoToSpawnPoint();
             }

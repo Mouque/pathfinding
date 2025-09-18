@@ -8,13 +8,13 @@ public class LevelObjective : MonoBehaviour
     public string nextScene;
 
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter( Collider other )
     {
-        if (other != null)
+        if ( other != null )
         {
-            if (other.gameObject.TryGetComponent(out PlayerController player))
+            if ( other.gameObject.TryGetComponent( out PlayerMovement player ) )
             {
-                SceneManager.LoadScene(nextScene);
+                SceneManager.LoadScene( nextScene );
             }
         }
 
