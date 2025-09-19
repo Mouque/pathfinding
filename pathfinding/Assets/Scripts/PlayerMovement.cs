@@ -13,14 +13,6 @@ public class PlayerMovement : MonoBehaviour
 
     public float speed;
 
-
-
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
     // Update is called once per frame
     void Update()
     {
@@ -49,6 +41,7 @@ public class PlayerMovement : MonoBehaviour
     void SpeedControl()
     {
         Vector3 flatVelocity = new Vector3( rb.velocity.x, 0f, rb.velocity.z );
+
         if ( flatVelocity.magnitude > speed )
         {
             Vector3 limitedVel = flatVelocity.normalized * speed;
@@ -59,7 +52,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void GoToSpawnPoint()
     {
-        transform.position =
-            new( spawnPoint.position.x, transform.position.y, spawnPoint.position.z );
+        transform.position = 
+            new Vector3( spawnPoint.position.x, transform.position.y, spawnPoint.position.z );
     }
 }
