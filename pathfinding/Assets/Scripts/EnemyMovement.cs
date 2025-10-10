@@ -32,6 +32,14 @@ public class EnemyMovement : MonoBehaviour
         }
     }
 
+    public IEnumerator PauseToKillPlayer(Vector3 playerPosition)
+    {
+        agent.isStopped = true;
+        transform.LookAt(playerPosition);
+        yield return new WaitForSeconds(1f);
+        agent.isStopped = false;
+    }
+
     private void OnTriggerEnter( Collider other )
     {
         if ( other != null )

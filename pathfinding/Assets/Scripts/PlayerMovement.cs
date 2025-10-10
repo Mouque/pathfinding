@@ -12,6 +12,8 @@ public class PlayerMovement : MonoBehaviour
     Vector3 moveDirection;
 
     public float speed;
+    public float deceleration;
+
 
     // Update is called once per frame
     void Update()
@@ -26,7 +28,14 @@ public class PlayerMovement : MonoBehaviour
 
         if ( moveDirection.magnitude == 0f )
         {
-            rb.velocity = Vector3.MoveTowards( rb.velocity, Vector3.zero, speed * Time.deltaTime );
+            rb.velocity = Vector3.MoveTowards( rb.velocity, Vector3.zero, deceleration * Time.deltaTime );
+            // change animation to idle
+        
+        }
+
+        if (moveDirection.magnitude != 0f)
+        {
+            // change animation to run
         }
     }
 
@@ -54,5 +63,6 @@ public class PlayerMovement : MonoBehaviour
     {
         transform.position = 
             new Vector3( spawnPoint.position.x, transform.position.y, spawnPoint.position.z );
+
     }
 }
