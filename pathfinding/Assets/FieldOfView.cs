@@ -43,7 +43,7 @@ public class FieldOfView : MonoBehaviour
     void PlayPlayerKillParticles()
     {
         PlayerKillParticles.transform.position = playerRef.transform.position;
-        PlayerKillParticles.transform.LookAt(-transform.position);
+        PlayerKillParticles.transform.LookAt(-(new Vector3(transform.position.x, PlayerKillParticles.transform.position.y, transform.position.z)));
         PlayerKillParticles.Play();
     }
 

@@ -15,6 +15,11 @@ public class PlayerMovement : MonoBehaviour
     public float deceleration;
 
 
+    void Start()
+    {
+        transform.position = spawnPoint.position;
+    }
+
     // Update is called once per frame
     void Update()
     {
